@@ -15,7 +15,7 @@ ssh-copy-id root_user@target.server.com
 * In ./ansible.cfg - check path to your private key and username 
 * Run Playbook:
 ```
-ansible-playbook docker-install.yml
+ansible-playbook run.yml
 ```
 
 
