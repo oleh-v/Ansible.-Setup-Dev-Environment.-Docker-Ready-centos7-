@@ -3,7 +3,7 @@
 
 - name: Samba Install
   yum: name={{ item }} state=present
-  loop:
+  with_items:
     - samba
     - samba-client
     - samba-common
