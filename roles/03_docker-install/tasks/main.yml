@@ -3,7 +3,7 @@
 
 - name: Uninstall old versions if exists
   yum: name={{ item }} state=absent
-  loop:
+  with_items:
     - docker
     - docker-client
     - docker-client-latest
@@ -18,7 +18,7 @@
 
 - name: Install required packages
   yum: name={{ item }} state=present
-  loop:
+  with_items:
     - yum-utils
     - device-mapper-persistent-data
     - lvm2
@@ -34,7 +34,7 @@
 
 - name: Install Docker CE
   yum: name={{ item }} state=present
-  loop:
+  with_items:
     - docker-ce
 
 - name: Restart service docker
