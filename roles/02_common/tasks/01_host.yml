@@ -1,0 +1,15 @@
+---
+# Setup hostname
+
+- name: Set hostname
+  hostname:
+    name: "ide-{{ env_ide_user }}"
+
+- name: hosts file
+  blockinfile:
+    path: /etc/hosts
+    block:
+      127.0.0.1 {{ env_ide_user }}
+
+      ::1 {{ env_ide_user }}
+  notify: restart network

@@ -1,0 +1,9 @@
+---
+env_ide_user: dev
+site: dev
+
+ntpserver: time.google.com
+
+# DOCKER_COMPOSE VARS
+docker_compose_version: 1.23.1
+docker_compose_path: /usr/local/bin/docker-compose

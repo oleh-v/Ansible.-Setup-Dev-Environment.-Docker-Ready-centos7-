@@ -1,0 +1,37 @@
+---
+# Samba
+
+- name: Samba Install
+  yum: name={{ item }} state=present
+  loop:
+    - samba
+    - samba-client
+    - samba-common
+
+- name: Creates directory
+  file: 
+    path: /host
+    state: directory
+    mode: 0777
+
+- name: Copy smb.conf
+  template:
+    src: smb.conf.j2
+    dest: /etc/samba/smb.conf
+    backup: yes
+  notify: "restart samba"
+
+- name: Samba user
+  shell: (echo dev; echo dev) | smbpasswd -a -s dev
+
+- name: Restart service smb
+  service:
+    name: smb
+    state: restarted
+    enabled: yes
+
+#- name: "samba reconfigure"
+#  command: dpkg-reconfigure samba-common
+#  notify: "restart samba"
+
+

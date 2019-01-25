@@ -1,0 +1,12 @@
+---
+firewalld_service:
+
+  - service: dhcpv6-client
+    permanent: true
+    state: disabled
+    immediate: yes
+
+  - service: ssh
+    permanent: true
+    state: disabled
+    immediate: yes

@@ -1,0 +1,14 @@
+---
+firewalld_rule:
+
+  - source: 10.1.4.0/24
+    permanent: true
+    zone: trusted
+    state: enabled
+    immediate: yes
+
+  - source: 192.168.0.0/16
+    permanent: true
+    zone: trusted
+    state: enabled
+    immediate: yes

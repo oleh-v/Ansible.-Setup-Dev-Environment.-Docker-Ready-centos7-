@@ -1,0 +1,6 @@
+---
+
+users:
+
+  - name: dev
+    passwd: dev

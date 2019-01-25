@@ -1,0 +1,8 @@
+---
+# Access to the target machine
+
+- name: Upload ROOT Key to the target machine
+  authorized_key:
+    user: root
+    state: present
+    key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"

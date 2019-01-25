@@ -1,0 +1,33 @@
+---
+# This playbook basic setup dev-docker-ready centos7 host
+
+- hosts: localhost
+  become: yes
+  gather_facts: no
+  vars_prompt:
+  - name: target_machine
+    prompt: Please enter IP (or hostname) of target machine
+    private: no
+
+  tasks:
+    - add_host:
+        name: "{{ target_machine }}"
+        groups: dynamically_created_hosts
+
+- name: Setup Docker-ready host
+  hosts: dynamically_created_hosts
+  remote_user: root
+
+  vars_prompt:
+
+  roles:
+    - 00_access
+    - 01_user
+    - 02_common
+    - 03_docker-install
+    - 04_docker-compose
+    - 05_selinux
+    - 07_samba
+    - 08_env
+    - 09_firewalld
+    - 12_reboot

@@ -1,0 +1,29 @@
+---
+# Add User
+
+#- include_vars: ../../group_vars/users.yml
+
+##########
+
+- name: Create new User
+  user:
+    name: dev
+    comment: dev
+    shell: /bin/bash
+    createhome: yes
+    groups: wheel
+    state: present
+    password: '{{ password_dev }}'
+
+- name: Allow 'wheel' group to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+
+### DEBUG ###
+# - debug: msg={{ r.stat.exists }}
+#  with_items: "{{ r.results }}"
+###

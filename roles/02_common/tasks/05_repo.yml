@@ -1,0 +1,15 @@
+---
+# Repositories
+
+- name: Add epel repository
+  yum:
+    name: epel-release
+    state: installed
+
+- name: Install yum-utils
+  yum:
+    name: yum-utils
+    state: installed
+
+- name: yum update
+  action: yum name=* state=latest

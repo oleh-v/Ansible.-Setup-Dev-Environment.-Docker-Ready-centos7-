@@ -1,0 +1,9 @@
+---
+
+- name: Add ENV variable
+  blockinfile:
+    path: /etc/environment
+    block:
+      
+      IDE_USER={{ env_ide_user }}
+
